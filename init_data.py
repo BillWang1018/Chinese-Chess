@@ -49,13 +49,10 @@ __board_data__ = [['c', 'm', 'x', 's', 'k', 's', 'x', 'm', 'c'],
                   ['C', 'M', 'X', 'S', 'K', 'S', 'X', 'M', 'C']]
   
 def getDefaultChessDictionary():
-    chess = __chess__
-    return chess
+    return __chess__
 
 def getDefaultBoardData():
-    board_data = __board_data__
-    return board_data
+    return __board_data__
 
 def getDefaultBoardLine():
-    board_line = __board_line__
-    return board_line
+    return __board_line__
