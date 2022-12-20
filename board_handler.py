@@ -1,44 +1,64 @@
-from init_board import *
+from init_board import getDefaultBoardLine, getDefaultChessDictionary
 
 # constants
 __rowSize__, __colSize__ = 2,4
-chess = getDefaultChessDictionary()
-board_line = getDefaultBoardLine()
 
 # from a1 to (0, 0)
 def strToPosition(str):
-    return (int(ord(str[0])-97), int(str[1])-1)
+    x = int(ord(str[0])-97)
+    y = int(str[1])-1
+    if(x < 0 or x >= 10):
+        x = -1
+    if(y < 0 or y >= 9):
+        y = -1
+    return (x, y)
 
 def moveChess(start, end, board):
 
     startPos = strToPosition(start)
     endPos = strToPosition(end)
 
-    print(startPos, endPos)
+    if(startPos[0] == -1 or startPos[1] == -1):
+        return False
+    if(endPos[0] == -1 or endPos[1] == -1):
+        return False
 
     c = board[startPos[0]][startPos[1]]
     board[startPos[0]][startPos[1]] = '0'
     board[endPos[0]][endPos[1]] = c
     
-    return board
+    return True
     
 # print the chess board in format
 def printBoard(board):
-
+    board_line = getDefaultBoardLine()
+    for bl in board_line:
+        print(bl)
+    chess = getDefaultChessDictionary()
     # modify the output with chess 
-
     pos = (-1,-1)
+    bufferList = []
     for row in range(10):
         buffer = ''
         for col in range(9):
             pos = (row*__rowSize__, col*__colSize__)
             c = board[row][col]
-            print(row, col)
+            print(board_line[pos[0]])
             if(c != '0'):
-                buffer = buffer + chess[c] + ('' if col==8 else board_line[pos[0]][pos[1]+2:pos[1]+4])
+                print(c, pos[0], pos[1], pos[1]+__colSize__, chess[c]+('' if col==8 else board_line[pos[0]][pos[1]+2:pos[1]+__colSize__]))
+
+                buffer = buffer + chess[c] + ('' if col==8 else board_line[pos[0]][pos[1]+2:pos[1]+__colSize__])
             else:
-                buffer = buffer + (board_line[pos[0]][pos[1]] if col==8 else board_line[pos[0]][pos[1]:pos[1]+4])
-        board_line[pos[0]] = buffer
+                print(c, pos[0], pos[1], pos[1]+__colSize__, board_line[pos[0]][pos[1]] if col==8 else board_line[pos[0]][pos[1]:pos[1]+__colSize__])
+
+                buffer = buffer + (board_line[pos[0]][pos[1]] if col==8 else board_line[pos[0]][pos[1]:pos[1]+__colSize__])
+        
+        for i in range(__rowSize__):
+            if i == 0:
+                bufferList.append(buffer)
+            elif col != 9:
+                bufferList.append(board_line[row+i])
+            
 
     # print out the chess board
     # print 1-9
@@ -51,7 +71,7 @@ def printBoard(board):
     countRow = 0
     resetRow = __rowSize__
 
-    for b in board_line:
+    for b in bufferList:
         if resetRow == __rowSize__:
             print(chr(97+countRow), end="  ") # 97 = a
             resetRow = 1
@@ -66,6 +86,6 @@ def printBoard(board):
         print(i+1, ' '*(__colSize__-2), end="")
     print('\n')
 
-# test
+
 # test = getDefaultBoardData()
 # printBoard(test)

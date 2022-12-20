@@ -1,17 +1,22 @@
-from board_handler import *
+from board_handler import printBoard, moveChess
 from init_board import getDefaultBoardData
 
 round = True # True: red, False: black
-board = getDefaultBoardData()
-printBoard(board)
+boardData = getDefaultBoardData()
+printBoard(boardData)
 
 while(True):
     print("紅方下：" if round else "黑方下：", end="")
 
     move = input()
     moveCmd = move.split(" ")
-    moveChess(moveCmd[0], moveCmd[1], board)
+    valid = moveChess(moveCmd[0], moveCmd[1], boardData)
 
-    printBoard(board)
+    if(valid):
+        printBoard(boardData)
+    else:
+        print("This move is illegal!")
+        continue
 
-    round = not round
+
+    round = not round # switch side
