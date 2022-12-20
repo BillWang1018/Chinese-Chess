@@ -32,8 +32,6 @@ def moveChess(start, end, board):
 # print the chess board in format
 def printBoard(board):
     board_line = getDefaultBoardLine()
-    for bl in board_line:
-        print(bl)
     chess = getDefaultChessDictionary()
     # modify the output with chess 
     pos = (-1,-1)
@@ -43,20 +41,15 @@ def printBoard(board):
         for col in range(9):
             pos = (row*__rowSize__, col*__colSize__)
             c = board[row][col]
-            print(board_line[pos[0]])
             if(c != '0'):
-                print(c, pos[0], pos[1], pos[1]+__colSize__, chess[c]+('' if col==8 else board_line[pos[0]][pos[1]+2:pos[1]+__colSize__]))
-
-                buffer = buffer + chess[c] + ('' if col==8 else board_line[pos[0]][pos[1]+2:pos[1]+__colSize__])
+                buffer += chess[c] + ('' if col==8 else board_line[pos[0]][pos[1]+2:pos[1]+__colSize__])
             else:
-                print(c, pos[0], pos[1], pos[1]+__colSize__, board_line[pos[0]][pos[1]] if col==8 else board_line[pos[0]][pos[1]:pos[1]+__colSize__])
-
-                buffer = buffer + (board_line[pos[0]][pos[1]] if col==8 else board_line[pos[0]][pos[1]:pos[1]+__colSize__])
+                buffer += (board_line[pos[0]][pos[1]] if col==8 else board_line[pos[0]][pos[1]:pos[1]+__colSize__])
         
         for i in range(__rowSize__):
             if i == 0:
                 bufferList.append(buffer)
-            elif col != 9:
+            elif row != 9:
                 bufferList.append(board_line[pos[0]+i])
             
 
