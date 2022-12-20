@@ -33,5 +33,3 @@ def startGame():
             continue
 
         round = not round # switch side
-
-startGame()
