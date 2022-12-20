@@ -57,7 +57,7 @@ def printBoard(board):
             if i == 0:
                 bufferList.append(buffer)
             elif col != 9:
-                bufferList.append(board_line[row+i])
+                bufferList.append(board_line[pos[0]+i])
             
 
     # print out the chess board
