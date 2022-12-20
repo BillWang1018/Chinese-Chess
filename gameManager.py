@@ -1,24 +1,30 @@
 from moveChess import moveChess
-from drawBoard import drawBoard
+# from drawBoard import drawBoard
+from drawBoardWithColor import drawBoardColored
 from init_data import getDefaultBoardData
-
+from termcolor import colored
+import os
 
 def startGame():
-    round = True # True: red, False: black
+    turn = True # True: red, False: black
     boardData = getDefaultBoardData()
-    drawBoard(boardData)
+    drawBoardColored(boardData)
 
     while(True):
 
         while(True):
+
             try: 
-                print("紅方下：" if round else "黑方下：", end="")
-                move = input()
-                moveCmd = move.split(" ")
-                valid = moveChess(moveCmd[0], moveCmd[1], boardData)
+                whosTurn = colored("紅", "red") if turn else colored("黑", attrs=["bold"])
+                print(whosTurn + "方下：", end="")
+                moveInput = input()
+                moveChess(moveInput, boardData, turn)
 
             except KeyboardInterrupt:
                 exit()
+
+            except Exception as errmsg:
+                print(errmsg)
 
             except:
                 print("Input error, try again!")
@@ -26,10 +32,7 @@ def startGame():
             else:
                 break
             
-        if(valid):
-            drawBoard(boardData)
-        else:
-            print("This move is illegal!")
-            continue
+        os.system('cls')
+        drawBoardColored(boardData)
 
-        round = not round # switch side
+        turn = not turn # switch side
