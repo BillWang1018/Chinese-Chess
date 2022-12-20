@@ -3,12 +3,14 @@ from moveChess import moveChess
 from drawBoardWithColor import drawBoardColored
 from init_data import getDefaultBoardData
 from termcolor import colored
+import colorama
 import os
 
 def startGame():
     turn = True # True: red, False: black
     boardData = getDefaultBoardData()
     drawBoardColored(boardData)
+    colorama.init()
 
     while(True):
 
