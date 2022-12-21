@@ -1,23 +1,31 @@
 from moveChess import moveChess
-# from drawBoard import drawBoard
-from drawBoardWithColor import drawBoardColored
+from drawBoard import drawBoard
+# from drawBoardWithColor import drawBoardColored
 from init_data import getDefaultBoardData
 from termcolor import colored
 import colorama
 import os
 
-def startGame():
+def startGame(color:bool=True, autoReverse:bool=False):
+
     turn = True # True: red, False: black
     boardData = getDefaultBoardData()
-    drawBoardColored(boardData)
-    colorama.init()
+    
+    if (color):
+        colorama.init()
+        
+    drawBoard(boardData, color, autoReverse)
 
     while(True):
 
         while(True):
 
             try: 
-                whosTurn = colored("紅", "red") if turn else colored("黑", attrs=["bold"])
+                if(color):
+                    whosTurn = colored("紅", "red") if turn else colored("黑", attrs=["bold"])
+                else:
+                    whosTurn = "紅" if turn else "黑"
+
                 print(whosTurn + "方下：", end="")
                 moveInput = input()
                 moveChess(moveInput, boardData, turn)
@@ -35,6 +43,6 @@ def startGame():
                 break
             
         os.system('cls')
-        drawBoardColored(boardData)
+        drawBoard(boardData, color, autoReverse)
 
         turn = not turn # switch side
