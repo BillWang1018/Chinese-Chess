@@ -33,4 +33,4 @@ j  俥━━傌━━相━━仕━━帥━━仕━━相━━傌━━俥
 
 The one who takes down the oppient's general wins!
 
-use `drawBoard()` instead of `drawBoardColored` if your console doesn't support ANSI formation.
+use `drawBoard()` instead of `drawBoardColored()` if your console doesn't support ANSI formation.
