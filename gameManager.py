@@ -13,8 +13,8 @@ def startGame(color:bool=True, autoReverse:bool=False):
     
     if (color):
         colorama.init()
-        
-    drawBoard(boardData, color, autoReverse)
+
+    drawBoard(boardData, color, autoReverse&True)
 
     while(True):
 
@@ -42,7 +42,7 @@ def startGame(color:bool=True, autoReverse:bool=False):
             else:
                 break
             
-        os.system('cls')
-        drawBoard(boardData, color, autoReverse)
-
         turn = not turn # switch side
+
+        os.system('cls')
+        drawBoard(boardData, color, autoReverse&turn)

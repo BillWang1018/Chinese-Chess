@@ -24,11 +24,11 @@ def drawBoard(board, color=True, reverse=False):
     # bufferList.append('')
 
     for row in range(10):
-        buffer = (chr(97+row) + ' '*__rowSize__)
+        buffer = (chr(97+ (row if reverse else 9-row) ) + ' '*__rowSize__)
 
         for col in range(9):
             pos = (row*__rowSize__, col*__colSize__)
-            c = board[row][col]
+            c = (board[row][col] if reverse else board[9-row][col])
 
             if(c != '0'):
                 if color:

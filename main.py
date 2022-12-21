@@ -4,4 +4,4 @@ from gameManager import startGame
 #   color = True/False
 #   autoReverse = True/False
 
-startGame(color=True, autoReverse=False)
+startGame(color=True, autoReverse=True)
