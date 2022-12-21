@@ -41,7 +41,7 @@ The one who takes down the oppient's general wins!
 
 In `main.py`, adding parameters in `startGame()` will change how the board is printed.
 
-Usable parameters:
+### Usable parameters:
 
 `color: bool` -> whether the chesses is printed with color effect
 
