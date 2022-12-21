@@ -3,7 +3,7 @@ A Chinese chess game in console, writen in python.
 
 ## How To Play:
 
-Use format `[a-j][1-9] [a-j][1-9] ` to move the chess
+Use format `[a-j][1-9] [a-j][1-9]` to move the chess
 `ctrl + c` will stop the program.
 
 ```
