@@ -1,6 +1,6 @@
 
 # True: red, False: black
-def checkValid(c, turn) -> bool:
+def checkValid(c:str, turn:bool) -> bool:
 
     if(c == '0'):
         raise Exception("You're moving an empty chess!")

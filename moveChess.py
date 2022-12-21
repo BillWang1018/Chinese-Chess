@@ -5,12 +5,12 @@ import re
 __rowSize__, __colSize__ = 2,4
 
 # from a1 to (0, 0)
-def strToPosition(str):
+def strToPosition(str:str):
     x = int(ord(str[0])-97)
     y = int(str[1])-1
     return (x, y)
 
-def moveChess(moveCmd, board, turn):
+def moveChess(moveCmd:str, board, turn:bool):
 
     if(re.search("^[a-j][1-9]\\s[a-j][1-9]$", moveCmd)):
         moveCmd = moveCmd.split(" ")
