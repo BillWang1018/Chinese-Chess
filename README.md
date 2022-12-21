@@ -35,12 +35,14 @@ j  俥━━傌━━相━━仕━━帥━━仕━━相━━傌━━俥
 
 The one who takes down the oppient's general wins!
 
--.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-
+
 
 ## Parameters
 
 In `main.py`, adding parameters in `startGame()` will change how the board is printed.
 
 Usable parameters:
-> `color: bool` -> whether the chesses is printed with color effect
-> `autoReverse: bool` -> whether the board is printed upside down according to who's playing (the board will always be south-facing the player)
+
+`color: bool` -> whether the chesses is printed with color effect
+
+`autoReverse: bool` -> whether the board is printed upside down according to who's playing (the board will always be south-facing the player)
