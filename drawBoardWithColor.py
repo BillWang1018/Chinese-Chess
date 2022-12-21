@@ -7,7 +7,7 @@ board_line = getDefaultBoardLine()
 chess = getDefaultChessDictionary()
 
 # print the chess board in format
-def drawBoardColored(board):
+def drawBoardColored(board, reverse=False):
     # modify the output with chess 
     pos = (-1,-1)
     bufferList = []
@@ -26,10 +26,10 @@ def drawBoardColored(board):
                     buffer += colored(chess[c], "white", attrs=["reverse", "bold"])
 
                     
-                buffer += ('' if col==8 else board_line[pos[0]][pos[1]+2:pos[1]+__colSize__])
+                buffer += '' if col==8 else board_line[pos[0]][pos[1]+2:pos[1]+__colSize__]
 
             else:
-                buffer += colored(board_line[pos[0]][pos[1]] if col==8 else board_line[pos[0]][pos[1]:pos[1]+__colSize__])
+                buffer += board_line[pos[0]][pos[1]] if col==8 else board_line[pos[0]][pos[1]:pos[1]+__colSize__]
         
         for i in range(__rowSize__):
 
