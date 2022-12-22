@@ -45,4 +45,4 @@ def startGame(color:bool=True, autoReverse:bool=False):
         turn = not turn # switch side
 
         os.system('cls')
-        drawBoard(boardData, color, autoReverse&turn)
+        drawBoard(boardData, color, autoReverse&turn) 
