@@ -8,7 +8,7 @@ board_line = getDefaultBoardLine()
 chess = getDefaultChessDictionary()
 
 # print the chess board in format
-def drawBoard(board, color:bool=True, reverse:bool=False):
+def drawBoard(board, color:bool=True, reverse:bool=False) -> None:
 
     if color:
         colorama.init()
