@@ -27,7 +27,7 @@ def startGame(color:bool=True, autoReverse:bool=False):
                     whosTurn = "紅" if turn else "黑"
 
                 print(whosTurn + "方下：", end="")
-                moveInput = input()
+                moveInput = input().strip()
                 moveChess(moveInput, boardData, turn)
 
             except KeyboardInterrupt:
