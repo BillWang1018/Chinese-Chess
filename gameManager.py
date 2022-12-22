@@ -7,12 +7,13 @@ import colorama
 import os
 
 boardData = getDefaultBoardData()
+
 def startGame(color:bool=True, autoReverse:bool=False) -> None:
 
     boardData = getDefaultBoardData()
 
     turn = True # True: red, False: black
-    
+
     if (color):
         colorama.init()
 
@@ -48,7 +49,3 @@ def startGame(color:bool=True, autoReverse:bool=False) -> None:
 
         os.system('cls')
         drawBoard(boardData, color, autoReverse&turn) 
-
-
-def getChess(pos: tuple) -> str:
-    return boardData[pos[0]][pos[1]]

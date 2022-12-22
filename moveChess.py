@@ -21,7 +21,7 @@ def moveChess(moveCmd:str, board, turn:bool) -> None:
 
     c = board[startPos[0]][startPos[1]]
     
-    if(checkValid(c, turn, startPos, endPos)):
+    if(checkValid(turn, startPos, endPos, board)):
         board[startPos[0]][startPos[1]] = '0'
         board[endPos[0]][endPos[1]] = c
     else:
