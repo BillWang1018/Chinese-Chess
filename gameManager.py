@@ -2,7 +2,7 @@ from moveChess import moveChess
 from drawBoard import drawBoard
 # from drawBoardWithColor import drawBoardColored
 from init_data import getDefaultBoardData
-from termcolor import colored
+from termcolor import colored, cprint
 import colorama
 import os
 
@@ -31,7 +31,7 @@ def startGame(color:bool=True, autoReverse:bool=False) -> None:
 
                 print(whosTurn + "方下：", end="")
                 moveInput = input().strip()
-                moveChess(moveInput, boardData, turn)
+                iswin = moveChess(moveInput, boardData, turn)
 
             except KeyboardInterrupt:
                 exit()
@@ -44,8 +44,20 @@ def startGame(color:bool=True, autoReverse:bool=False) -> None:
 
             else:
                 break
+
+        if iswin:
+            drawBoard(boardData, color, autoReverse&turn) 
+            endGame(turn)
+            exit()
             
         turn = not turn # switch side
 
         os.system('cls')
         drawBoard(boardData, color, autoReverse&turn) 
+
+
+def endGame(turn:bool) -> None:
+    if turn:
+        cprint("RED has won the game!!!", "white", "on_red")
+    else:
+        cprint("BLACK has won the game!!!", attrs=["bold", "reverse"])

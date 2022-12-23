@@ -10,7 +10,7 @@ def strToPosition(str:str) -> tuple:
     y = int(str[1])-1
     return (x, y)
 
-def moveChess(moveCmd:str, board, turn:bool) -> None:
+def moveChess(moveCmd:str, board, turn:bool) -> bool:
 
     if(re.search("^[a-j][1-9]\\s[a-j][1-9]$", moveCmd)):
         moveCmd = moveCmd.split(" ")
@@ -22,7 +22,14 @@ def moveChess(moveCmd:str, board, turn:bool) -> None:
     c = board[startPos[0]][startPos[1]]
     
     if(checkValid(turn, startPos, endPos, board)):
+        if(board[endPos[0]][endPos[1]].lower() == 'k'):
+            win = True
+        else :
+            win = False
         board[startPos[0]][startPos[1]] = '0'
         board[endPos[0]][endPos[1]] = c
+
+        return win
+        
     else:
-        raise Exception()
+        raise Exception("Not avalible!")
