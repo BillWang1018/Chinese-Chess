@@ -100,7 +100,13 @@ def checkK(check, walk, board):
         return False
     elif walk[0] > 2 and walk[0] < 7:
         return False
-    
+    if check[1] == walk[1] and (board[walk[0]][walk[1]] == 'k' or board[walk[0]][walk[1]] == 'K'):
+        k1 = min(check[0], walk[0])+1
+        k2 = max(check[0], walk[0])
+        for k in range(k1, k2):
+            if board[k][check[1]] != '0':
+                return False
+        return True
     if check[0] == walk[0] and abs(walk[1]-check[1]) == 1:
         return True
     elif check[1] == walk[1] and abs(walk[0]-check[0]) == 1:
