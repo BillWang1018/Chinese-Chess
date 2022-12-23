@@ -39,9 +39,9 @@ def drawBoard(board, color:bool=True, reverse:bool=False) -> None:
             if(c != '0'):
                 if color:
                     if(c.isupper()):
-                        buffer += colored(chess[c], "red", "on_white", attrs=["underline", "bold"])
+                        buffer += colored(chess[c], "red", "on_white", attrs=["bold"])
                     if(c.islower()):
-                        buffer += colored(chess[c], attrs=["underline", "reverse", "bold"])
+                        buffer += colored(chess[c], attrs=["reverse", "bold"])
                 else:
                     buffer += chess[c]
                 buffer += '' if col==8 else board_line[pos[0]][pos[1]+2:pos[1]+__colSize__]
