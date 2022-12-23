@@ -18,13 +18,19 @@ def drawBoard(board, color:bool=True, reverse:bool=False) -> None:
     bufferList = []
 
     buffer=' ' * (__rowSize__+1)
-    for i in range(9): 
-        buffer += (str(i+1) + ' '*(__colSize__-1))
+    for i in range(9):
+        if color:
+            buffer += colored(str(i+1) + ' '*(__colSize__-1), "grey")
+        else:
+            buffer += (str(i+1) + ' '*(__colSize__-1))
     bufferList.append(buffer)
     # bufferList.append('')
 
     for row in range(10):
-        buffer = (chr(97+ (row if reverse else 9-row) ) + ' '*__rowSize__)
+        if color:
+            buffer = colored(chr(97+ (row if reverse else 9-row) ) + ' '*__rowSize__, "grey")
+        else:
+            buffer = (chr(97+ (row if reverse else 9-row) ) + ' '*__rowSize__)
 
         for col in range(9):
             pos = (row*__rowSize__, col*__colSize__)
@@ -33,9 +39,9 @@ def drawBoard(board, color:bool=True, reverse:bool=False) -> None:
             if(c != '0'):
                 if color:
                     if(c.isupper()):
-                        buffer += colored(chess[c], "white", "on_red")
+                        buffer += colored(chess[c], "red", "on_white", attrs=["underline", "bold"])
                     if(c.islower()):
-                        buffer += colored(chess[c], "white", attrs=["reverse", "bold"])
+                        buffer += colored(chess[c], attrs=["underline", "reverse", "bold"])
                 else:
                     buffer += chess[c]
                 buffer += '' if col==8 else board_line[pos[0]][pos[1]+2:pos[1]+__colSize__]
@@ -56,7 +62,10 @@ def drawBoard(board, color:bool=True, reverse:bool=False) -> None:
     # bufferList.append('')
     buffer=' ' * (__rowSize__+1)
     for i in range(9): 
-        buffer += (str(i+1) + ' '*(__colSize__-1))
+        if color:
+            buffer += colored(str(i+1) + ' '*(__colSize__-1), "grey")
+        else:
+            buffer += (str(i+1) + ' '*(__colSize__-1)) 
     bufferList.append(buffer)
             
     # print out the chess board
